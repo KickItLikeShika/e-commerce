@@ -4,7 +4,7 @@ E-commerce RESTful API based on Java, SpringBoot, Spring security, JWT, hibernat
 
 # REST API Endpoints
 
-Open Postman 'https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?hl=ar'
+Open Postman 'https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop'
 
 	http://localhost:8080
 		
