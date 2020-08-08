@@ -9,6 +9,7 @@ import com.shika.ecomerce.repository.OrderRepository;
 import com.shika.ecomerce.repository.ProductRepository;
 import com.shika.ecomerce.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,27 +20,35 @@ public class PropsService {
     private UserRepository userRepository;
     private ProductRepository productRepository;
     private OrderRepository orderRepository;
+    private AuthService authService;
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     public PropsService(UserRepository userRepository,
                         ProductRepository productRepository,
-                        OrderRepository orderRepository) {
+                        OrderRepository orderRepository,
+                        AuthService authService,
+                        PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.productRepository = productRepository;
         this.orderRepository = orderRepository;
+        this.authService = authService;
+        this.passwordEncoder = passwordEncoder;
     }
 
-    public String editUser(RegisterRequest registerRequest, long id) {
-        User user = mapEditingUser(registerRequest, id);
+    public String editUser(RegisterRequest registerRequest) {
+        User user = mapEditingUser(registerRequest);
         userRepository.save(user);
         return "User has been updated!";
     }
 
-    private User mapEditingUser(RegisterRequest registerRequest, long id) {
-        User user = userRepository.findUserById(id);
+    private User mapEditingUser(RegisterRequest registerRequest) {
+        org.springframework.security.core.userdetails.User currUser = authService.getCurrUser();
+        String currUsername = currUser.getUsername();
+        User user = userRepository.findUserByUsername(currUsername);
         user.setEmail(registerRequest.getEmail());
         user.setUsername(registerRequest.getUsername());
-        user.setPassword(registerRequest.getPassword());
+        user.setPassword(encodePassword(registerRequest.getPassword()));
         user.setEnabled(true);
         return user;
     }
@@ -73,4 +82,9 @@ public class PropsService {
         orderRepository.delete(order);
         return "Order has been canceled!";
     }
+
+    private String encodePassword(String password) {
+        return passwordEncoder.encode(password);
+    }
+
 }
