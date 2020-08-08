@@ -24,7 +24,7 @@ Open Postman 'https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdgg
 						required: product id, full name, address, city, zip code, phone 
 
 		/edit
-			PUT /user/{id} - Edit a specific user info - required: email, username, password
+			PUT /user - Edit the current logged in user info - required: email, username, password
 			PUT /product/{id} - Edit a specific product info - required: name, price, description
 			DELETE /order/{id} - Cancel an order
 
