@@ -30,7 +30,7 @@ Open Postman 'https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdgg
 
 # How to use 
 
-Open Postman, make a POST request 'http://localhost:8080/auth/register' and type in the body in a JSON format an email, username, password then send the request and it's registerd.
+Open Postman, make a POST request 'http://localhost:8080/auth/register' and type in the body in a JSON format an email, username, password then send the request and you're gonna be registerd.
 Then make another POST request 'http://lovalhost:8080/auth/login' and type in the body in a JSON format a username, password and send the request. It generate a token and sends it back to you -because of using JWT authorization-.
 And after that all you requests must be authorized, to make that you have to add a header in the headers tab in postman the 'key' = 'Authorization', 'value' = 'Bearer <The generated token you got after logging in>.
 Follow the same way for each request.
