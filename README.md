@@ -37,4 +37,4 @@ Follow the same way for each request.
 
 # Hints 
 
-- All inputs and outputs user JSON format.
+- All inputs and outputs using JSON format.
