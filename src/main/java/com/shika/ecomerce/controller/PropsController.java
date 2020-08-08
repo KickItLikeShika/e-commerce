@@ -17,10 +17,9 @@ public class PropsController {
         this.propsService = propsService;
     }
 
-    @RequestMapping(value = "/user/{id}", method = RequestMethod.PUT)
-    public String editUser(@RequestBody RegisterRequest registerRequest,
-                           @PathVariable("id") long id) {
-        return propsService.editUser(registerRequest, id);
+    @RequestMapping(value = "/user", method = RequestMethod.PUT)
+    public String editUser(@RequestBody RegisterRequest registerRequest) {
+        return propsService.editUser(registerRequest);
     }
 
     @RequestMapping(value = "product/{id}", method = RequestMethod.PUT)
