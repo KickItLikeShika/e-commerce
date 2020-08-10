@@ -24,12 +24,12 @@ public class ProductController {
         return productService.getAllProducts();
     }
 
-    @RequestMapping("/get/{id}")
+    @RequestMapping("/getid/{id}")
     public Product getProductById(@PathVariable("id") long id) {
         return productService.getProductById(id);
     }
 
-    @RequestMapping("/get/{name}")
+    @RequestMapping("/getname/{name}")
     public List<Product> getProductByName(@PathVariable("name") String name) {
         return productService.getProductByName(name);
     }
