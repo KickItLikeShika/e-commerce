@@ -14,8 +14,8 @@ Open Postman 'https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdgg
 
 		/product
 			GET /get - Get all the products 
-			GET /get/{id} - Get a specific product by its id
-			GET /get/{name} - Get a list of prodcut by their names
+			GET /getid/{id} - Get a specific product by its id
+			GET /getname/{name} - Get a list of prodcut by their names
 			POST /add - Add a product - required: name, price, description
 
 		/order
